@@ -16,6 +16,25 @@ class _YoutubeHomeState extends State<YoutubeHome> {
 
   @override
   Widget build(BuildContext context) {
+
+    List<Widget> screens = [
+      Center(
+        child: Text('Home'),
+      ),
+      Center(
+        child: Text('Trending'),
+      ),
+      Center(
+        child: Text('Subscriptions'),
+      ),
+      Center(
+        child: Text('Inbox'),
+      ),
+      Center(
+        child: Text('Library'),
+      ),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -40,6 +59,7 @@ class _YoutubeHomeState extends State<YoutubeHome> {
           )
         ],
       ),
+      body: screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
