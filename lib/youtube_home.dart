@@ -6,6 +6,14 @@ class YoutubeHome extends StatefulWidget {
 }
 
 class _YoutubeHomeState extends State<YoutubeHome> {
+  int _currentIndex = 0;
+
+  _onTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,13 +40,23 @@ class _YoutubeHomeState extends State<YoutubeHome> {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(title: Text('Home'), icon: Icon(Icons.home)),
-        BottomNavigationBarItem(title: Text('Trending'), icon: Icon(Icons.home)),
-        BottomNavigationBarItem(title: Text('Subscriptions'), icon: Icon(Icons.home)),
-        BottomNavigationBarItem(title: Text('Inbox'), icon: Icon(Icons.home)),
-        BottomNavigationBarItem(title: Text('Library'), icon: Icon(Icons.home)),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          type: BottomNavigationBarType.fixed,
+          fixedColor: Colors.red,
+          onTap: _onTapped,
+          items: [
+            BottomNavigationBarItem(
+                title: Text('Home'), icon: Icon(Icons.home)),
+            BottomNavigationBarItem(
+                title: Text('Trending'), icon: Icon(Icons.whatshot)),
+            BottomNavigationBarItem(
+                title: Text('Subscriptions'), icon: Icon(Icons.subscriptions)),
+            BottomNavigationBarItem(
+                title: Text('Inbox'), icon: Icon(Icons.mail)),
+            BottomNavigationBarItem(
+                title: Text('Library'), icon: Icon(Icons.folder)),
+          ]),
     );
   }
 }
