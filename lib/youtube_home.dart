@@ -15,7 +15,7 @@ class _YoutubeHomeState extends State<YoutubeHome> with SingleTickerProviderStat
     super.initState();
     animationController =
         AnimationController(duration: Duration(milliseconds: 500), vsync: this);
-    animation = Tween(begin: -1.0, end: 0.0).animate(
+    animation = Tween(begin: 1.0, end: 0.0).animate(
         CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn));
     animationController.forward();
 

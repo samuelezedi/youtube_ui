@@ -23,13 +23,21 @@ class VideoList extends StatelessWidget {
                         fit: BoxFit.cover)),
               ),
               ListTile(
+                contentPadding: EdgeInsets.all(10),
+                dense: true,
                 leading: CircleAvatar(
                   backgroundImage: NetworkImage(listData[index].channelAvatar),
                 ),
-                title: Text(listData[index].title, style: TextStyle(),),
+                title: Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: Text(listData[index].title, style: TextStyle(),),
+                ),
                 subtitle: Text("${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
-                trailing: IconButton(
-                  icon: Icon(Icons.more_vert),
+                trailing: Container(
+                  margin: EdgeInsets.only(bottom:20),
+                  child: IconButton(
+                    icon: Icon(Icons.more_vert),
+                  ),
                 ),
               )
             ],
