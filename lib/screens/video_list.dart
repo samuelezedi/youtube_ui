@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 
 class VideoList extends StatelessWidget {
-
   final listData;
 
   const VideoList({this.listData});
@@ -16,9 +15,9 @@ class VideoList extends StatelessWidget {
 
     return ListView.separated(
         itemBuilder: (context, index) {
-          if(deviceOrientation == Orientation.portrait) {
+          if (deviceOrientation == Orientation.portrait) {
             return _buildPortraitList(context, index, width);
-          }else{
+          } else {
             return _buildLandscapeList(context, index, width);
           }
         },
@@ -47,11 +46,15 @@ class VideoList extends StatelessWidget {
           ),
           title: Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
-            child: Text(listData[index].title, style: TextStyle(),),
+            child: Text(
+              listData[index].title,
+              style: TextStyle(),
+            ),
           ),
-          subtitle: Text("${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
+          subtitle: Text(
+              "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
           trailing: Container(
-            margin: EdgeInsets.only(bottom:20),
+            margin: EdgeInsets.only(bottom: 20),
             child: IconButton(
               icon: Icon(Icons.more_vert),
             ),
@@ -67,7 +70,7 @@ class VideoList extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            width: 336/2,
+            width: 336 / 2,
             height: 100,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -83,11 +86,15 @@ class VideoList extends StatelessWidget {
                   contentPadding: EdgeInsets.only(left: 10),
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Text(listData[index].title, style: TextStyle(),),
+                    child: Text(
+                      listData[index].title,
+                      style: TextStyle(),
+                    ),
                   ),
-                  subtitle: Text("${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
+                  subtitle: Text(
+                      "${listData[index].channelTitle} . ${listData[index].viewCount} . ${listData[index].publishedTime}"),
                   trailing: Container(
-                    margin: EdgeInsets.only(bottom:20),
+                    margin: EdgeInsets.only(bottom: 20),
                     child: IconButton(
                       icon: Icon(Icons.more_vert),
                     ),
@@ -99,7 +106,7 @@ class VideoList extends StatelessWidget {
                   height: 30,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
-                        listData[index].channelAvatar,
+                      listData[index].channelAvatar,
                     ),
                   ),
                 ),
