@@ -6,7 +6,20 @@ class YoutubeHome extends StatefulWidget {
   _YoutubeHomeState createState() => _YoutubeHomeState();
 }
 
-class _YoutubeHomeState extends State<YoutubeHome> {
+class _YoutubeHomeState extends State<YoutubeHome> with SingleTickerProviderStateMixin {
+  Animation animation;
+  AnimationController animationController;
+
+  @override
+  initState (){
+    super.initState();
+    animationController =
+        AnimationController(duration: Duration(milliseconds: 500), vsync: this);
+    animation = Tween(begin: -1.0, end: 0.0).animate(
+        CurvedAnimation(parent: animationController, curve: Curves.fastOutSlowIn));
+    animationController.forward();
+
+  }
   int _currentIndex = 0;
 
   _onTapped(int index) {
@@ -17,6 +30,8 @@ class _YoutubeHomeState extends State<YoutubeHome> {
 
   @override
   Widget build(BuildContext context) {
+
+    var width = MediaQuery.of(context).size.width;
 
     List<Widget> screens = [
       HomeScreen(),
@@ -58,7 +73,15 @@ class _YoutubeHomeState extends State<YoutubeHome> {
           )
         ],
       ),
-      body: screens[_currentIndex],
+      body: AnimatedBuilder(
+        animation: animationController,
+        builder: (context, child){
+          return Transform(
+            transform: Matrix4.translationValues(animation.value * width, 0.0, 0.0),
+            child: screens[_currentIndex],
+          );
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
