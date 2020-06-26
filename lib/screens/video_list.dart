@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtubeclone/models/youtube_model.dart';
 
 class VideoList extends StatelessWidget {
   @override
@@ -7,12 +8,14 @@ class VideoList extends StatelessWidget {
         itemBuilder: (context, index){
           return Column(
             children: <Widget>[
-              Text('Youtube Data')
+              Text(youtubeData[index].title)
             ],
           );
         },
-        separatorBuilder: null,
-        itemCount: null
+        separatorBuilder: (context, index){
+          return Divider(height: 1.0);
+        },
+        itemCount: youtubeData.length
     );
   }
 }
