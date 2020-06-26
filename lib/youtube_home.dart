@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youtubeclone/screens/home.dart';
 
 class YoutubeHome extends StatefulWidget {
   @override
@@ -18,9 +19,7 @@ class _YoutubeHomeState extends State<YoutubeHome> {
   Widget build(BuildContext context) {
 
     List<Widget> screens = [
-      Center(
-        child: Text('Home'),
-      ),
+      HomeScreen(),
       Center(
         child: Text('Trending'),
       ),
